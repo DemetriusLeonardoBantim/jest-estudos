@@ -46,19 +46,19 @@ describe('Compras', () => {
       .post('/cart')
       .send({
         nome: 'Demetrius Leonardo',
-        compra: ['Beterraba', 'Macarrao'],
+        produto: ['Beterraba', 'Macarrao'],
       });
     const response = await request(app)
       .put(`/cart/${compra.body.id}`)
       .send({
         nome: 'Demetrius',
-        compra: ['Beterraba', 'Macarrao', 'Feijao'],
+        produto: ['Beterraba', 'Macarrao', 'Feijao'],
       });
     expect(isUuid(response.body.id)).toBe(true);
 
     expect(response.body).toMatchObject({
       nome: 'Demetrius',
-      compra: ['Beterraba', 'Macarrao', 'Feijao'],
+      produto: ['Beterraba', 'Macarrao', 'Feijao'],
     });
   });
 });
