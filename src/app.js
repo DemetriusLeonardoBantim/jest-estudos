@@ -29,7 +29,7 @@ app.put('/cart/:id', (request, response) => {
   const { nome, produto } = request.body;
   const compraIndex = compras.findIndex((compra) => compra.id === id);
 
-  if (compraIndex < 0) {
+  if (compraIndex === -1) {
     return response.status(400).json({ error: 'Compra not found' });
   }
 
