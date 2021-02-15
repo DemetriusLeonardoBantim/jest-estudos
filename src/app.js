@@ -48,11 +48,11 @@ app.delete('/cart/:id', (request, response) => {
 
   const comprasIndex = compras.findIndex((compra) => compra.id === id);
 
-  if (comprasIndex < 0) {
-    return response.status(400).json({ error: 'Compra not found' });
+  if (comprasIndex >= 0) {
+    compras.splice(comprasIndex, 1);
+  } else {
+    return response.status(400).json({ error: 'Id da compra nao existe' });
   }
-
-  compras.splice(comprasIndex, 1);
 
   return response.status(204).send();
 });
